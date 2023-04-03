@@ -1,12 +1,12 @@
 ---
-title: Payment and Nfts as content types
-description: With this XIP you can integrate payments and Nfts as content types in your Xmtp App
-author: @aeyshubh,@gunner26735,@phovious14
-status: Draft
-suggested-XIP-Number : 3
-type: Standards Track
-category: XRC
-created: 2023-04-04
+Title: Payment and Nfts as content types
+Description: Xip for payments and Nfts as content types 
+Authors: Shubham Patel (@aeyshubh), Siddharth Shukla (@gunner26735), Krishn Panchal (@phovious14)
+Satus: Draft
+Suggested-XIP-Number : 3
+Type: Standards Track
+Category: XRC
+Created: 2023-04-04
 ---
 
 ## Abstract
