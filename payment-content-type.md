@@ -26,8 +26,8 @@ Abstract is a multi-sentence (short paragraph) technical summary. This should be
 - Payments:
     - Must things to implement :
         - The first thing to keep in mind while integrating Payments in your app is the format in which the transfer function will be called.
-        - The format we suggest : `\pay [amount] [tokenName]`
-        - Eg : \pay 5 usdc ~ it's just like saying Hi,I want to pay you 5 USDC.  
+        - The format we suggest : `/pay [amount] [tokenName]`
+        - Eg : /pay 5 usdc ~ it's just like saying Hi,I want to pay you 5 USDC.  
         - To implement the above you could fetch the message from the users side then split it into array using ".split" method in Javascript .
         - The user can write "USDC" or "usdc" or "UsDc" cauz it's user so first you have to convert the given command into lower case and accordingly you fetch the contract address.
         - After splitting you take array[1] and array[2] values which will be the Amount and the token name.
@@ -75,7 +75,7 @@ Abstract is a multi-sentence (short paragraph) technical summary. This should be
 - The only testcase the application will fail is the case in which the order of sending the command is changed i.e The correct order is "/pay 5 USDC".
     - The user can mistaken it for "\pay 5 USDC" 
     - "/pya USDC 5"
-    - "/pay USDD 5"
+    - "\pay USDD 5"
     - In such cases An Alert shall be provided specifying the correct order .
 
 ## Reference Implementation
