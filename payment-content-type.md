@@ -11,9 +11,7 @@ Created: 2023-04-04
 
 ## Abstract
 
-- Payments : Every ERC20 token has a contract address and a token Transfer function ,when the \pay keyword is encountered then we fetch the token name(USDC,MATIC) from the command then it's contract address and call the transfer function with that contract address on behalf of the user,if the user accepts the transfer event in his metamask wallet then the tokens will be treansfered and the transaction link will be sent in the chat.  
-
-Abstract is a multi-sentence (short paragraph) technical summary. This should be a very terse and human-readable version of the specification section. Someone should be able to read only the abstract to get the gist of what this specification does.
+- Payments : Every ERC20 token has a contract address and a token Transfer function ,when the `\pay` keyword is encountered then we fetch the token name(USDC ,MATIC) from the command then it's contract address and call the transfer function with that contract address on behalf of the user,if the user accepts the transfer event in his metamask wallet then the tokens will be transfered and the transaction link can be sent in the chat.  
 
 ## Motivation
 
@@ -29,15 +27,15 @@ Abstract is a multi-sentence (short paragraph) technical summary. This should be
         - The format we suggest : `/pay [amount] [tokenName]`
         - Eg : /pay 5 usdc ~ it's just like saying Hi,I want to pay you 5 USDC.  
         - To implement the above you could fetch the message from the users side then split it into array using ".split" method in Javascript .
-        - The user can write "USDC" or "usdc" or "UsDc" cauz it's user so first you have to convert the given command into lower case and accordingly you fetch the contract address.
-        - After splitting you take array[1] and array[2] values which will be the Amount and the token name.
+        - The user can write "USDC" or "usdc" or "UsDc" cauz it's user so first you have to convert the given command into `lower case` and accordingly you fetch the contract address.
+        - After splitting, you take array[1] and array[2] values which will be the Amount and the token name.
         - From a dictionary you fetch it's chain and the Token's deployed contract addess and call a transfer function on it.
         - Following are steps which you need to go through to call the "transfer" function of a contract.
             1. Create a ABI of ERC20 token,every ERC20 token have same `ABI` ,heres a reference [ABI Reference](https://github.com/aeyshubh/XIP-payment-ref/blob/main/tokenAbi.js "ABI reference"),you could use this ABI too.
             2. Import it into the file in which you want to call the transfer function.
-            3. Create a variable for storing the token contract address of the token on which you want to call the token transfer event. Syntax :  const tokenAddress = '0xc94dd466416A7dFE166aB2cF916D3875C049EBB7';
-            4. Create a contract reference variable for calling the transfer function of the Token's contract. Syntax : const tokenContract = new ethers.Contract(tokenAddress, abi2, signer);
-            5. Next up ,you will call the `transfer` function in which _receiver will be the address of the person you are chatting with and _amount is the amount user wants to send which can be fetched by array[2] . Syntax : const writen = await tokenContract.transfer(_receiver, ethers.utils.parseEther(_amount));
+            3. Create a variable for storing the token contract address of the token on which you want to call the token transfer event. Syntax :  `const tokenAddress = '0xc94dd466416A7dFE166aB2cF916D3875C049EBB7';`
+            4. Create a contract reference variable for calling the transfer function of the Token's contract. Syntax : `const tokenContract = new ethers.Contract(tokenAddress, abi2, signer);`
+            5. Next up ,you will call the `transfer` function in which _receiver will be the address of the person you are chatting with and _amount is the amount user wants to send which can be fetched by array[2] . Syntax : `const writen = await tokenContract.transfer(_receiver, ethers.utils.parseEther(_amount));`
             6. The transfer function will return a promise and on completion of the promise you can get the hash of the transaction to prove your payment . Syntax : console.log("Payment Hash" + writen.hash);
     - One very important thing which you need to keep in mind is the Chain which the user is on,If the Token address is of Polygon chain and the user is on Ethereum chain then the transaction will go through but it would fail eventually and the gas would be wasted.
     - So if the user is on Ethereum chain then the token Address ahould be of Ethereum chain.
